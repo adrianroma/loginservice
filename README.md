@@ -101,6 +101,24 @@ Test the health endpoint:
 curl http://localhost:8080/health
 ```
 
+## Security Considerations
+
+⚠️ **WARNING**: This is a demonstration project and includes the following security limitations:
+
+- **Hardcoded credentials**: The username and password are hardcoded in the source code for demonstration purposes only
+- **Static tokens**: Authentication tokens are static and not cryptographically secure
+- **No rate limiting**: The login endpoint is vulnerable to brute force attacks
+- **HTTP only**: Credentials are transmitted in plain text without TLS/HTTPS
+- **No persistent storage**: User credentials and sessions are not stored in a database
+
+**Before using in production:**
+1. Implement proper credential storage (database, LDAP, OAuth, etc.)
+2. Use secure token generation (JWT with proper signing, or secure random tokens)
+3. Add rate limiting to prevent brute force attacks
+4. Use HTTPS/TLS (either directly or via reverse proxy like nginx)
+5. Implement proper session management and token invalidation
+6. Add logging and monitoring for security events
+
 ## Configuration
 
 The service can be configured using environment variables:
